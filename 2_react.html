@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="react.js"></script>
+    <script src="react-dom.js"></script>
+    <script src="browser.js"></script>  </head>
+<body>
+<div id="app"></div>
+  <script type="text/babel">
+      var Message=React.createClass({
+          getInitialState:function() {
+              return {
+                  isVisible: true,
+                  messageBox: "hahaha",
+              }
+
+          },
+        render: function() {
+              var styleObj = {
+                  display:this.state.isVisible?"block":"none",
+              }
+            return(
+                <h1 style={styleObj}> {this.state.messageBox}</h1>
+            )
+        }
+      });
+      ReactDOM.render(
+          <Message/>,
+              document.getElementById("app")
+
+      )
+  </script>
+</body>
+</html>

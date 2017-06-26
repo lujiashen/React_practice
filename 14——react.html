@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="react.js"></script>
+    <script src="react-dom.js"></script>
+    <script src="browser.js"></script>
+</head>
+<body>
+    <div id="app"></div>
+    <script type="text/babel">
+        var Submessage=React.createClass({
+            clickHandler:function (e) {
+               this.props.counter(e);   /*子组件调用父组件方法*/
+            },
+            render:function() {
+                var msg=[];
+                this.props.arr.forEach(function(value,index){
+                        msg.push( <lable key={index}>{value}<input type="checkbox" onChange={this.clickHandler}/></lable>)
+                }.bind(this));
+                return(
+                    <div>{msg}</div>
+                )
+            }
+        });
+        var  Message=React.createClass({
+            getInitialState() {
+              return {
+                  count: 0
+              }
+            },
+            counter:function (e) {
+                this.setState({
+                    count: e.target.checked?this.state.count+1:this.state.count-1
+                })
+            },
+            render:function () {
+                var arr=["林大","理工","黑大"];
+                return(
+                    <div>
+                        <h1>输入的个数为：{this.state.count}</h1>
+                        <Submessage  arr={arr} counter={this.counter}/>
+                    </div>
+                )
+            }
+        });
+        ReactDOM.render(
+            <Message/>,
+            document.getElementById("app")
+        )
+    </script>
+</body>
+</html>

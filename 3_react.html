@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="react.js"></script>
+    <script src="react-dom.js"></script>
+    <script src="browser.js"></script>
+</head>
+
+<body>
+    <div id="app"></div>
+    <script type="text/babel">
+        var Message=React.createClass({
+            getInitialState:function() {
+                return {
+                    isAble: true,
+                    a: "woshinibaba"
+                }
+            },
+                   render:function(){
+                    var obj= {
+                       background:this.state.isAble?"red":"black"
+                    };
+
+                    return (
+                            <h1 style={obj}>{this.state.a}</h1>
+                    )
+                }
+
+        });
+        ReactDOM.render(
+            <Message/>,
+                document.getElementById("app")
+        )
+
+    </script>
+</body>
+</html>

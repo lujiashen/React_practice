@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="react.js"></script>
+    <script src="react-dom.js"></script>
+    <script src="browser.js"></script>
+</head>
+<body>
+    <button id="app"></button>
+    <script type="text/babel">
+        var Message=React.createClass({
+            getInitialState:function() {
+                return {
+                    count : 0
+                }
+            } ,
+        clickHanlder:function() {
+                this.setState({
+                    count: this.state.count+1
+                })
+
+        },
+            render:function() {
+                    return (
+                                    <div>
+                                        <button onClick={this.clickHanlder}>dianji</button>
+                                        <h1>{this.state.count}</h1>
+                                    </div>
+                        )
+            },
+        });
+        ReactDOM.render(
+            <Message/>,
+            document.getElementById("app")
+        )
+    </script>
+</body>
+</html>

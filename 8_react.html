@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script src="react.js"></script>
+    <script src="react-dom.js"></script>
+    <script src="browser.js"></script>
+    <div id="app"></div>
+    <script type="text/babel">
+        var Bingding=React.createClass({
+            getInitialState:function() {
+                return {
+                    username: ""
+                }
+
+            },
+            changeHandler:function (e) {
+                this.setState({
+                    username:e.target.value
+                })
+            },
+            render:function () {
+                return(
+                    <div>
+                        <input type="text" value={this.state.username} onChange={this.changeHandler}/>
+                        <div>{this.state.username}</div>
+                    </div>
+                )
+            }
+        });
+        ReactDOM.render(
+            <Bingding/>,
+            document.getElementById("app")
+        )
+    </script>
+</body>
+</html>
